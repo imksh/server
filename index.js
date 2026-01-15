@@ -4,8 +4,8 @@ dotenv.config();
 
 //imports
 import express from "express";
-import connectDB from "./config/connectDB.js";
-import authRouter from "./routers/auth.route.js";
+import connectDB from "./src/config/connectDB.js";
+import authRouter from "./src/routers/auth.route.js";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
