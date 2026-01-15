@@ -9,6 +9,7 @@ import authRouter from "./src/routers/auth.route.js";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import sendOtp from "./src/utils/sendOtp.js"
 
 //creating express app
 const app = express();
@@ -30,6 +31,7 @@ app.use("/api/auth", authRouter);
 
 //root
 app.get("/", (req, res) => {
+  sendOtp("karan03945@gmail.com", 8522, "Karan Sharma");
   res.status(200).json({ message: "Server is running" });
 });
 
