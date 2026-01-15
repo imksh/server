@@ -15,7 +15,10 @@ export const register = async (req, res, next) => {
     const user = await User.findOne({ email });
 
     if (user) {
-      return res.status(409).json({ message: "User Already exists" });
+      return next({
+        status: 409,
+        message: "User Already exists.",
+      });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -30,10 +33,11 @@ export const register = async (req, res, next) => {
     generateToken(newUser, res);
 
     res.status(201).json({
-      id: newUser._id,
+      _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
     });
+
   } catch (error) {
     console.log("Error in signup controller", error);
     next(error);

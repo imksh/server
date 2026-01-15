@@ -4,12 +4,13 @@ dotenv.config();
 
 //imports
 import express from "express";
-import connectDB from "./src/config/connectDB.js";
-import authRouter from "./src/routers/auth.route.js";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import sendOtp from "./src/utils/sendOtp.js"
+import connectDB from "./src/config/connectDB.js";
+import authRouter from "./src/routers/auth.route.js";
+import pagesRouter from "./src/routers/pages.route.js";
 
 //creating express app
 const app = express();
@@ -28,6 +29,7 @@ app.use(morgan("dev"));
 //routers
 
 app.use("/api/auth", authRouter);
+app.use("/api/pages", pagesRouter);
 
 //root
 app.get("/", (req, res) => {
