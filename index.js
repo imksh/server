@@ -31,7 +31,6 @@ app.use("/api/auth", authRouter);
 
 //root
 app.get("/", (req, res) => {
-  sendOtp("karan03945@gmail.com", 8522, "Karan Sharma");
   res.status(200).json({ message: "Server is running" });
 });
 
