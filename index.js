@@ -7,7 +7,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import sendOtp from "./src/utils/sendOtp.js"
+import sendOtp from "./src/utils/sendOtp.js";
 import connectDB from "./src/config/connectDB.js";
 import authRouter from "./src/routers/auth.route.js";
 import pagesRouter from "./src/routers/pages.route.js";
@@ -18,7 +18,7 @@ const app = express();
 //middlewares
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://imksh-pages.netlify.app", "http://localhost:5173"],
     credentials: true,
   })
 );
