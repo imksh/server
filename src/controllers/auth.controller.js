@@ -30,14 +30,13 @@ export const register = async (req, res, next) => {
       password: hashedPassword,
     });
 
-    generateToken(newUser, res);
+    generateToken(newUser, req, res);
 
     res.status(201).json({
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
     });
-
   } catch (error) {
     console.log("Error in signup controller", error);
     next(error);
@@ -62,7 +61,7 @@ export const login = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    generateToken(user, res);
+    generateToken(user, req, res);
 
     res.status(200).json({
       id: user._id,
