@@ -72,18 +72,16 @@ export const login = async (req, res, next) => {
     next(error);
   }
 };
-
 export const logout = async (req, res, next) => {
   try {
-    res.cookie("token", "", {
+    res.clearCookie("token", {
       httpOnly: true,
-      maxAge: 0,
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
     });
-    res.status(200).json({ message: "Logout Successfully" });
+
+    res.status(200).json({ message: "Logout successfully" });
   } catch (error) {
-    console.log("Error in signup controller", error);
     next(error);
   }
 };
