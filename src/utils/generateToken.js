@@ -14,7 +14,7 @@ const generateToken = (user, req, res) => {
   };
 
   if (platform === "web") {
-    res.cookie("jwt", token, cookieOptions);
+    res.cookie("token", token, cookieOptions);
   }
 
   return token;
