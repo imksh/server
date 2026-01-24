@@ -11,6 +11,7 @@ import sendOtp from "./src/utils/sendOtp.js";
 import connectDB from "./src/config/connectDB.js";
 import authRouter from "./src/routers/auth.route.js";
 import pagesRouter from "./src/routers/pages.route.js";
+import publicRouter from "./src/routers/public.route.js";
 
 //creating express app
 const app = express();
@@ -30,6 +31,7 @@ app.use(morgan("dev"));
 
 app.use("/api/auth", authRouter);
 app.use("/api/pages", pagesRouter);
+app.use("/api/public", publicRouter);
 
 //root
 app.get("/", (req, res) => {
