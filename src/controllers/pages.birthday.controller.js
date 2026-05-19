@@ -6,19 +6,20 @@ export const addBirthday = async(req, res, next) => {
     const { name, date, message,sender } = req.body;
     const images = req.files;
     if (!name || !date || !sender) {
-      next({ status: 400, message: "Name and date are required" });
+      return next({ status: 400, message: "Name and date are required" });
+
     }
 
     let uploads = [];
 
-    if (images) {
+    if (images?.length > 0) {
       uploads = await UploadMultipleToCloudinary(images, "Pages/Birthday");
     }
 
     const birthday = new Birthday({
       name,
       date,
-        sender,
+      sender,
       message,
       images: uploads,
     });
