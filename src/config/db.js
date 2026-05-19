@@ -4,10 +4,10 @@ const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
     console.log(
-      `Connected to DB ${conn.connection.name} @ ${conn.connection.host}:${conn.connection.port}`
+      `DataBase is connected at ${conn.connection.name} @ ${conn.connection.host}:${conn.connection.port}`
     );
   } catch (error) {
-    console.log("Error in connectDB: ", error);
+    console.log("Error in connectDB config: ", error);
     process.exit(1);
   }
 };

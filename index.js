@@ -1,20 +1,24 @@
 //dotenv
-import dotenv from "dotenv";
-dotenv.config();
+import "./src/config/env.js";
 
 //imports
 import express from "express";
+import { createServer } from "http";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import sendOtp from "./src/utils/sendOtp.js";
-import connectDB from "./src/config/connectDB.js";
+import initializeSocket from "./src/config/socket.js";
+import cloudinary from "./src/config/cloudinary.js";
+import connectDB from "./src/config/db.js";
 import authRouter from "./src/routers/auth.route.js";
 import pagesRouter from "./src/routers/pages.route.js";
 import publicRouter from "./src/routers/public.route.js";
 
 //creating express app
 const app = express();
+const server = createServer(app);
+
 
 //middlewares
 app.use(
@@ -53,7 +57,15 @@ app.use((err, req, res, next) => {
 //port
 const port = process.env.PORT || 4500;
 
-app.listen(port, () => {
-  connectDB();
+initializeSocket(server);
+
+server.listen(port, async () => {
   console.log("Server is started at: ", port);
+  connectDB();
+  // try {
+  //   const res = await cloudinary.api.ping();
+  //   console.log("Cloudinary api is working ", res);
+  // } catch (error) {
+  //   console.error("Error in connecting cloudinary api", error);
+  // }
 });
