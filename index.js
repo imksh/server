@@ -25,7 +25,7 @@ app.use(
     origin: [
       "https://pages-imksh.netlify.app",
       "http://localhost:5173",
-      "http://imksh.online",
+      "https://imksh.online",
       "https://imksh3.netlify.app",
     ],
     credentials: true,
