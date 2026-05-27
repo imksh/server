@@ -1,7 +1,7 @@
 import sendEmail from "../config/email.js";
 
-const sendOtpEmail = async (to, otp) => {
-  const subject = "OTP to reset your Gradify password";
+const sendOtpEmail = async (to, otp, app, name) => {
+  const subject = `OTP to reset your ${app} password`;
 
   const message = `
   <body style="margin:0; padding:0; background:#f4f6f8; font-family:Arial, sans-serif;">
@@ -15,7 +15,7 @@ const sendOtpEmail = async (to, otp) => {
 
       <!-- Content -->
       <div style="padding:32px; color:#1f2937;">
-        <p style="font-size:16px; margin-bottom:12px;">Hello,</p>
+        <p style="font-size:16px; margin-bottom:12px;">Hello ${name},</p>
 
         <p style="font-size:15px; line-height:1.6; color:#374151;">
           We received a request to reset your password.
@@ -43,13 +43,13 @@ const sendOtpEmail = async (to, otp) => {
         </p>
 
         <p style="margin-top:30px; font-size:14px; color:#374151;">
-          — Team Gradify
+          — Team ${app}
         </p>
       </div>
 
       <!-- Footer -->
       <div style="background:#f9fafb; padding:16px; text-align:center; font-size:12px; color:#9ca3af;">
-        © 2026 Gradify. All rights reserved.
+        © 2026 ${app}. All rights reserved.
       </div>
 
     </div>

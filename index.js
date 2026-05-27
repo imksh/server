@@ -19,13 +19,17 @@ import publicRouter from "./src/routers/public.route.js";
 const app = express();
 const server = createServer(app);
 
-
 //middlewares
 app.use(
   cors({
-    origin: ["https://imksh-pages.netlify.app", "http://localhost:5173"],
+    origin: [
+      "https://pages-imksh.netlify.app",
+      "http://localhost:5173",
+      "http://imksh.online",
+      "https://imksh3.netlify.app",
+    ],
     credentials: true,
-  })
+  }),
 );
 app.use(express.json());
 app.use(cookieParser());
